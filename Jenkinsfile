@@ -31,8 +31,8 @@ pipeline {
         stage('Deploy to AppServer') {
             steps {
                 sshagent(credentials: ['appserver-ssh']) {
-                    sh "ssh -o StrictHostKeyChecking=no azureuser@<ApplicationServer_IP> 'docker pull souravdutta06/souravnetapp:latest'"
-                    sh "ssh azureuser@<ApplicationServer_IP> 'docker run -d -p 80:80 souravdutta06/souravnetapp:latest'"
+                    sh "ssh -o StrictHostKeyChecking=no sysadmin@48.221.120.232 'docker pull souravdutta06/souravnetapp:latest'"
+                    sh "ssh sysadmin@48.221.120.232 'docker run -d -p 80:80 souravdutta06/souravnetapp:latest'"
                 }
             }
         }
