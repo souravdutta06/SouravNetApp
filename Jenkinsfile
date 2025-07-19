@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')
+        PATH = "/usr/bin/dotnet:${env.PATH}"
     }
     stages {
         stage('Checkout') {
@@ -11,7 +12,7 @@ pipeline {
         }
         stage('Build & Test') {
             steps {
-                sh '/usr/share/dotnet/dotnet build'
+                sh 'dotnet build'
                 sh 'dotnet test tests/SouravNetApp.Tests/SouravNetApp.Tests.csproj'
             }
         }
