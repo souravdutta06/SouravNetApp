@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Build & Test') {
             steps {
-                sh 'dotnet build'
+                sh '/usr/share/dotnet/dotnet build'
                 sh 'dotnet test tests/SouravNetApp.Tests/SouravNetApp.Tests.csproj'
             }
         }
